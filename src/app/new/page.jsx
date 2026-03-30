@@ -1,10 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import PageHeader from './PageHeader'
-import FormField from './FormField'
-import TextAreaField from './TextAreaField'
-import Button from './Button'
+import PageHeader from '@/components/PageHeader'
+import Button from '@/components/Button'
+import FormField from '@/components/FormField'
 
 export default function NewPage({ onCreated }) {
   const [saving, setSaving] = useState(false)
@@ -87,18 +86,17 @@ export default function NewPage({ onCreated }) {
     }
   }
 
-  // After successful creation, show the links
   if (result) {
     return (
       <main className="max-w-xl mx-auto px-6 py-20">
         <PageHeader
-          title="Page Created!"
+          title="Page created!"
           description={`Here are your links for ${result.page.company_name}. The client link can be shared with anyone, while the edit link should be kept secret.`}
         />
 
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-3">
-            <p className="tracking-[-0.01em] text-base font-normal text-deep-charcoal/66">Client link <span className='text-deep-charcoal/30'>&mdash; share this</span></p>
+            <p className="text-base font-normal text-deep-charcoal/66">Client link <span className='text-deep-charcoal/30'>&mdash; share this</span></p>
             <div className="flex gap-2">
               <code className="flex-1 p-4 border bg-ocean/2 border-ocean/24 rounded-lg text-sm break-all">
                 {window.location.origin}{result.publicUrl}
@@ -118,7 +116,7 @@ export default function NewPage({ onCreated }) {
           </div>
 
           <div className="flex flex-col gap-3">
-            <p className="tracking-[-0.01em] text-base font-normal text-deep-charcoal/66">Edit link <span className='text-deep-charcoal/30'>&mdash; keep secret</span></p>
+            <p className="text-base font-normal text-deep-charcoal/66">Edit link <span className='text-deep-charcoal/30'>&mdash; keep secret</span></p>
             <div className="flex gap-2">
               <code className="flex-1 p-4 border bg-ocean/2 border-ocean/24 rounded-lg text-sm break-all">
                 {window.location.origin}{result.editUrl}
@@ -163,7 +161,7 @@ export default function NewPage({ onCreated }) {
 
   // The creation form
   return (
-    <main className="max-w-xl mx-auto px-6 py-20">
+    <main className="max-w-140  mx-auto px-6 py-20">
       <PageHeader title="Create a personalized sales page" />
       
       <div className="flex flex-col gap-6">
@@ -192,7 +190,8 @@ export default function NewPage({ onCreated }) {
           )}
         </div>
 
-        <TextAreaField
+        <FormField
+          as="textarea"
           label="Company summary"
           value={form.company_summary}
           onChange={(e) => updateField('company_summary', e.target.value)}

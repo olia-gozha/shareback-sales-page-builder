@@ -102,7 +102,7 @@ export default function Home() {
   }, [selectedPage])
 
   return (
-    <main className="flex flex-1 min-h-0 bg-white">
+    <main className="flex h-screen overflow-hidden bg-white">
       <EditorSidebar
         loading={loading}
         error={error}
@@ -116,15 +116,15 @@ export default function Home() {
         onSelectPage={setSelectedPageId}
       />
 
-      <section className="flex-1 min-h-0 overflow-y-auto">
+      <section className="flex-1 min-h-0 overflow-y-auto px-9 py-4">
         {!selectedPage && <NewPage onCreated={handleCreated} />}
 
         {selectedPage && selectedLoading && (
-          <div className="px-6 py-10 text-sm text-gray-500">Loading page...</div>
+          <div className="text-sm text-deep-charcoal/48 h-8 flex items-center">Loading page...</div>
         )}
 
         {selectedPage && selectedError && (
-          <div className="px-6 py-10 text-sm text-red-600">{selectedError}</div>
+          <div className="text-sm text-red-600">{selectedError}</div>
         )}
 
         {selectedPage && selectedPageData && (

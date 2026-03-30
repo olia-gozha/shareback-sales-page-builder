@@ -22,13 +22,13 @@ export default function Button({
       ? 'bg-transparent text-deep-charcoal/48'
       : 'bg-deep-charcoal text-white'
 
-  const baseClassName = `${fullWidth ? 'w-full' : ''} cursor-pointer inline-flex items-center justify-center gap-1 pl-4.5 pr-5 py-4 rounded-lg font-normal transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-slate ${variantClassName} ${className}`.trim()
+  const baseClassName = `${fullWidth ? 'w-full' : ''} shrink-0 cursor-pointer inline-flex items-center justify-center gap-1 pl-4.5 pr-5 py-4 rounded-lg font-normal transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-slate ${variantClassName} ${className}`.trim()
 
   if (href) {
     return (
       <a href={href} className={baseClassName}>
         {showIcon ? <IconComponent size={iconSize} aria-hidden="true" /> : null}
-        {idleLabel && <span>{isLoading ? loadingLabel : idleLabel}</span>}
+        {idleLabel && <span className='whitespace-nowrap'>{isLoading ? loadingLabel : idleLabel}</span>}
       </a>
     )
   }
@@ -40,7 +40,7 @@ export default function Button({
       className={baseClassName}
     >
       {showIcon ? <IconComponent size={iconSize} aria-hidden="true" /> : null}
-      {idleLabel && <span>{isLoading ? loadingLabel : idleLabel}</span>}
+      {idleLabel && <span className='whitespace-nowrap'>{isLoading ? loadingLabel : idleLabel}</span>}
     </button>
   )
 }
