@@ -112,13 +112,13 @@ export default function EditorSidebar({
             />
           </div>
 
-          {loading && <p className="text-sm text-deep-charcoal/48">Loading pages...</p>}
+          {loading && <p className="text-sm text-deep-charcoal/48 py-2 px-3">Loading pages...</p>}
           {error && <p className="text-sm text-red-600">{error}</p>}
 
           {!loading && !error && (
             <div className="overflow-y-auto space-y-1">
               {filteredPages.length === 0 && (
-                <p className="text-sm text-deep-charcoal/48 whitespace-nowrap">
+                <p className="text-sm text-deep-charcoal/48 whitespace-nowrap py-2 px-3">
                   {pages.length === 0 ? 'No pages yet.' : 'No pages match this search.'}
                 </p>
               )}
