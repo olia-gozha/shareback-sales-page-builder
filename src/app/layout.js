@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import DevHydrationWarningFilter from "@/components/DevHydrationWarningFilter";
 
 const soehne = localFont({
   src: [
@@ -55,6 +56,7 @@ export default function RootLayout({ children }) {
       className={`${soehne.variable} ${tiemposLightItalic.variable} h-full antialiased`}
     >
       <body suppressHydrationWarning className="min-h-full flex flex-col">
+        <DevHydrationWarningFilter />
         {children}
       </body>
     </html>

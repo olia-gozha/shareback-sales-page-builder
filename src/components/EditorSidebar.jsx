@@ -1,11 +1,13 @@
 import { Menu, Plus, Search } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import useMounted from '@/lib/useMounted'
 
 const styles = {
   aside: "shrink-0 bg-white bg-gradient-to-b  from-mist/9 to-mist/9 flex flex-col transition-all duration-200 border-r border-r-slate/12",
   menu: "cursor-pointer inline-flex h-8 w-8 items-center justify-center rounded-md transition-colors duration-200 hover:bg-deep-charcoal/5 hover:text-deep-charcoal",
   createBtn: "cursor-pointer self-start text-sm mb-3 flex flex-row items-center gap-1 bg-white py-2 pr-4 pl-2.5 rounded-md border border-slate/10 shadow-[0px_2px_10px_color-mix(in_oklab,var(--color-slate)_10%,transparent)] hover:bg-slate/2 transition-colors duration-200 text-deep-charcoal",
-  searchField: "cursor-pointer text-sm mb-3 flex flex-row items-center gap-1 bg-transparent py-2 pr-4 pl-2.5 hover:bg-slate/2 transition-colors duration-200 text-deep-charcoal",
+  searchField: "cursor-pointer text-sm flex flex-row items-center gap-1 bg-transparent py-2 pr-4 pl-2.5 hover:bg-gradient-to-b hover:from-deep-charcoal/1 hover:to-deep-charcoal/1 hover:bg-mist/9 transition-colors duration-200 text-deep-charcoal rounded-md appearance-none outline-none ring-0 border border-transparent focus:outline-none focus-visible:outline-none focus:ring-2 focus:ring-deep-charcoal focus-visible:ring-2 focus-visible:ring-deep-charcoal w-full",
+  pageItem: "cursor-pointer text-sm flex flex-col gap-1 bg-transparent py-2 px-3 hover:bg-gradient-to-b hover:from-deep-charcoal/1 hover:to-deep-charcoal/1 hover:bg-mist/9  transition-colors duration-200 text-deep-charcoal rounded-md appearance-none outline-none ring-0 border border-transparent focus:outline-none focus-visible:outline-none w-full text-left font-normal leading-[1.25] shrink-0",
 }
 
 export default function EditorSidebar({
@@ -19,8 +21,25 @@ export default function EditorSidebar({
   onCreateNew,
   onSearchChange,
   onSelectPage,
-}) {
+})
+{
+  const isMounted = useMounted()
   const [isCollapsed, setIsCollapsed] = useState(false)
+
+  useEffect(() => {
+    if (!isMounted) return
+
+    const handleResize = () => {
+      setIsCollapsed(window.innerWidth < 768)
+    }
+
+    handleResize()
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [isMounted])
 
   return isCollapsed ? (
     <aside className={`${styles.aside} w-14 px-2 py-4`}>
@@ -37,7 +56,7 @@ export default function EditorSidebar({
       </div>
     </aside>
   ) : (
-    <aside className={`${styles.aside} w-60 p-4`}>
+    <aside className={`${styles.aside} w-60 p-4 gap-3 flex flex-col`}>
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2 text-deep-charcoal/88">
             <button
@@ -73,58 +92,60 @@ export default function EditorSidebar({
           className={styles.createBtn}
         >
           <Plus size={16} aria-hidden="true" />
-          <span>New page</span>
+          <span className='whitespace-nowrap'>New page</span>
         </button>
-
-        <div className="relative mb-3">
-          <Search
-            size={16}
-            aria-hidden="true"
-            className="pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 text-deep-charcoal/60"
-          />
-          <input
-            type="text"
-            value={searchTerm}
-            onChange={(e) => onSearchChange(e.target.value)}
-            placeholder="Search pages (2+ chars)"
-            className={`${styles.searchField} pl-8`}
-          />
-        </div>
-
-        {loading && <p className="text-sm text-gray-500">Loading pages...</p>}
-        {error && <p className="text-sm text-red-600">{error}</p>}
-
-        {!loading && !error && (
-          <div className="overflow-y-auto space-y-1">
-            {filteredPages.length === 0 && (
-              <p className="text-sm text-gray-500">
-                {pages.length === 0 ? 'No pages yet.' : 'No pages match this search.'}
-              </p>
-            )}
-
-            {filteredPages.map((page) => {
-              const isActive = selectedPageId === page.id
-
-              return (
-                <button
-                  key={page.id}
-                  type="button"
-                  onClick={() => onSelectPage(page.id)}
-                  className={`w-full text-left p-3 rounded-lg border transition-colors ${
-                    isActive
-                      ? 'border-black bg-black text-white'
-                      : 'border-gray-200 bg-white hover:bg-gray-50'
-                  }`}
-                >
-                  <p className="font-medium truncate">{page.company_name || 'Untitled'}</p>
-                  <p className={`text-xs mt-1 ${isActive ? 'text-gray-200' : 'text-gray-500'}`}>
-                    {page.status || 'pre-call'}
-                  </p>
-                </button>
-              )
-            })}
+        <div>
+          <div suppressHydrationWarning className="relative">
+            <Search
+              size={16}
+              aria-hidden="true"
+              suppressHydrationWarning
+              className="pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 text-deep-charcoal/50"
+            />
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(e) => onSearchChange(e.target.value)}
+              placeholder="Search&hellip;"
+              suppressHydrationWarning
+              className={`${styles.searchField} pl-8`}
+            />
           </div>
-        )}
+
+          {loading && <p className="text-sm text-deep-charcoal/48">Loading pages...</p>}
+          {error && <p className="text-sm text-red-600">{error}</p>}
+
+          {!loading && !error && (
+            <div className="overflow-y-auto space-y-1">
+              {filteredPages.length === 0 && (
+                <p className="text-sm text-deep-charcoal/48 whitespace-nowrap">
+                  {pages.length === 0 ? 'No pages yet.' : 'No pages match this search.'}
+                </p>
+              )}
+
+              {filteredPages.map((page) => {
+                const isActive = selectedPageId === page.id
+
+                return (
+                  <button
+                    key={page.id}
+                    type="button"
+                    onClick={() => onSelectPage(page.id)}
+                    className={`${styles.pageItem} ${
+                      isActive &&
+                        'bg-slate/2'
+                    }`}
+                  >
+                    <p className="truncate whitespace-nowrap">{page.company_name || 'Untitled'}</p>
+                    <p className='text-deep-charcoal/48 whitespace-nowrap'>
+                      {page.status || 'Pre-call'}
+                    </p>
+                  </button>
+                )
+              })}
+            </div>
+          )}
+        </div>
 
         <div className="mt-auto pt-4 text-slate/30">
           <svg width="104" height="24" viewBox="0 0 104 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
