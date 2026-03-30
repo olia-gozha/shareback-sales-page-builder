@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import useMounted from '@/lib/useMounted'
 
 const styles = {
-  aside: "shrink-0 bg-white bg-gradient-to-b  from-mist/9 to-mist/9 flex flex-col transition-all duration-200 border-r border-r-slate/12",
+  aside: "shrink-0 bg-white bg-gradient-to-b from-mist/9 to-mist/9 flex flex-col transition-all duration-200 border-r border-r-slate/12",
   menu: "cursor-pointer inline-flex h-8 w-8 items-center justify-center rounded-md transition-colors duration-200 hover:bg-gradient-to-b hover:from-deep-charcoal/2 hover:to-deep-charcoal/2 hover:bg-mist/9 hover:text-deep-charcoal",
   createBtn: "cursor-pointer self-start text-sm mb-3 flex flex-row items-center gap-1 bg-white py-2 pr-4 pl-2.5 rounded-md border border-slate/10 shadow-[0px_2px_10px_color-mix(in_oklab,var(--color-slate)_10%,transparent)] hover:bg-slate/2 transition-colors duration-200 text-deep-charcoal",
   searchField: "cursor-pointer text-sm flex flex-row items-center gap-1 bg-transparent py-2 pr-4 pl-2.5 hover:bg-gradient-to-b hover:from-deep-charcoal/1 hover:to-deep-charcoal/1 hover:bg-mist/9 transition-colors duration-200 text-deep-charcoal rounded-md appearance-none outline-none ring-0 border border-transparent focus:outline-none focus-visible:outline-none focus:ring-3 focus:ring-ocean/18 focus-visible:ring-3 focus-visible:ring-ocean/18 w-full",
