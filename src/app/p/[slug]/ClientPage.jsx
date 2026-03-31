@@ -28,7 +28,7 @@ export default function ClientPage({ page }) {
           {activeTab === 'post-call' ? <CompanySetup page={page} /> : null}
           {activeTab === 'post-call' ? <DailyWorkflow page={page} /> : null}
           {activeTab === 'post-call' ? <Investment page={page} /> : null}
-          <CTA activeTab={activeTab} />
+          <CTA activeTab={activeTab} page={page} />
       {/* </div> */}
     </main>
   )
