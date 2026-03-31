@@ -5,46 +5,45 @@ export default function CTA({ activeTab, page }) {
 
   return (
     <section
-      className="bg-ocean px-10 py-20 pt-75 space-y-20"
+      className="bg-ocean bg-[linear-gradient(115.42deg,_#6A949D_37.48%,_#99BBC1_100%)] bg-cover bg-center bg-no-repeat px-10 py-20 pt-75 gap-20 relative"
     >
-      {/* Background Image & Gradient Overlay */}
-      {/* <div className="absolute inset-0 z-0">
+
+      <div className="absolute bottom-0 left-0 right-0 before:absolute before:inset-0 before:bg-[#6A949D]/12">
         <img
-          src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?q=80&w=2574&auto=format&fit=crop"
+          src="/sb-clouds-transparent.png"
           alt="Clouds background"
-          className="w-full h-full object-cover object-bottom"
+          className="w-full h-full object-contain object-bottom"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ocean/95 via-ocean/80 to-sky-blue/40 mix-blend-multiply"></div>
-        <div className="absolute inset-0 bg-ocean/35 backdrop-blur-[2px]"></div>
-      </div> */}
+      </div>
 
       {activeTab === 'post-call' ? <FAQ /> : <Process page={page} />}
 
       {/* Bottom Content: CTA & Footer */}
-      <div className="relative z-10 mt-32 md:mt-40 flex flex-col">
-        <h2 className="text-6xl md:text-8xl lg:text-[7.5rem] font-serif tracking-tight leading-[0.9] mb-10 text-white drop-shadow-sm">
-          Your team can be live <br className="hidden md:block" />
-          this week
-        </h2>
-
-        <div className="mb-24">
+      <div className="pt-25 space-y-16 sm:space-y-30 md:space-y-50 lg:space-y-95 relative z-10">
+        <div className='space-y-4 sm:space-y-8 md:space-y-15'>
+          <h2 className="max-w-240 text-6xl md:text-8xl lg:text-[110px] 2xl:text-[140px] 2xl:max-w-254 font-serif tracking-[-0.04em]! leading-none text-white drop-shadow-sm drop-shadow-slate/50">
+            Your team can be live this week
+          </h2>
           <a
-            href="#"
-            className="inline-flex items-center gap-4 bg-white/10 hover:bg-white/20 border border-white/30 backdrop-blur-md rounded-full pr-8 pl-1.5 py-1.5 transition-all shadow-lg"
+            href="https://calendly.com/lauren-shareback/shareback-personalized-demo"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center p-5 pr-10 gap-3 bg-ocean/16 border-[1.5px] border-white/24 shadow-[0px_2px_4px_color-mix(in_oklab,var(--color-ocean)_1%,transparent),0px_8px_34px_color-mix(in_oklab,var(--color-ocean)_24%,transparent)] rounded-full text-2xl text-white tracking-[-0.02em]! leading-[114%] grow-0 hover:bg-ocean/50 hover:-translate-y-0.5 hover:shadow-[0px_4px_8px_color-mix(in_oklab,var(--color-ocean)_6%,transparent),0px_12px_40px_color-mix(in_oklab,var(--color-ocean)_28%,transparent)] transition-all duration-300 ease-out"
           >
-            <div className="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden shrink-0">
+            <div className="transition-transform duration-300 group-hover:translate-x-0.5 relative w-15 h-15 rounded-full bg-white overflow-hidden shrink-0">
               <img
                 src="/lauren-avatar.png"
-                alt="Lauren"
-                className="w-full h-full object-cover bg-slate/20"
+                alt="Lauren Ladd"
+                className="w-full h-full object-cover"
               />
+              <div className="absolute inset-0 rounded-full ring-3 ring-inset ring-white/24 pointer-events-none" />
             </div>
-            <span className="text-xl md:text-2xl font-light tracking-wide text-white">Book a time</span>
+            Book a time
           </a>
         </div>
 
-        <footer className="flex justify-between items-end text-white/70 text-xs font-medium uppercase tracking-wider w-full">
-          <a href="mailto:lauren@shareback.com" className="hover:text-white transition-colors">lauren@shareback.com</a>
+        <footer className="flex justify-between items-center text-white text-sm w-full">
+          <a href="mailto:lauren@shareback.com" className="inline-flex rounded py-1 px-2 hover:bg-mist/10 hover:drop-shadow-sm drop-shadow-slate/50 transition-colors duration-300 ease-out">lauren@shareback.com</a>
           <span>Shareback 2026</span>
         </footer>
       </div>
