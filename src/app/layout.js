@@ -30,6 +30,12 @@ const tiemposLightItalic = localFont({
   display: "swap",
 });
 
+const tiemposLight = localFont({
+  src: "../fonts/tiempos-fine-light.woff2",
+  variable: "--font-tiempos-light",
+  display: "swap",
+});
+
 function getBaseUrl() {
   if (process.env.NEXT_PUBLIC_SITE_URL) {
     return process.env.NEXT_PUBLIC_SITE_URL;
