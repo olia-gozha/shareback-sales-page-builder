@@ -1,5 +1,21 @@
 import { supabaseAdmin } from '@/lib/supabase'
 import { NextResponse } from 'next/server'
+import { randomBytes } from 'node:crypto'
+
+const SLUG_ALPHABET = 'abcdefghijklmnopqrstuvwxyz0123456789'
+const SLUG_LENGTH = 10
+const MAX_SLUG_RETRIES = 5
+
+function generateGibberishSlug() {
+  const bytes = randomBytes(SLUG_LENGTH)
+  let slug = ''
+
+  for (const byte of bytes) {
+    slug += SLUG_ALPHABET[byte % SLUG_ALPHABET.length]
+  }
+
+  return slug
+}
 
 export async function GET() {
   try {
@@ -30,33 +46,43 @@ export async function POST(request) {
   try {
     const body = await request.json()
 
-    // Generate a URL-friendly slug from the company name
-    // "Acme Corp" → "acme-corp"
-    const slug = body.company_name
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-|-$/g, '')
+    let data = null
+    let lastError = null
 
-    const { data, error } = await supabaseAdmin
-      .from('pages')
-      .insert({
-        slug,
-        company_name: body.company_name,
-        company_summary: body.company_summary || null,
-        company_logo: body.company_logo || null,
-      })
-      .select()
-      .single()
+    for (let attempt = 0; attempt < MAX_SLUG_RETRIES; attempt += 1) {
+      const slug = generateGibberishSlug()
 
-    if (error) {
-      // If slug already exists, Supabase throws a unique constraint error
-      if (error.code === '23505') {
-        return NextResponse.json(
-          { error: 'A page for this company already exists' },
-          { status: 409 }
-        )
+      const { data: insertedPage, error } = await supabaseAdmin
+        .from('pages')
+        .insert({
+          slug,
+          company_name: body.company_name,
+          company_summary: body.company_summary || null,
+          company_logo: body.company_logo || null,
+        })
+        .select()
+        .single()
+
+      if (!error) {
+        data = insertedPage
+        break
       }
+
+      // Retry with a new random slug if we hit a slug uniqueness collision.
+      if (error.code === '23505') {
+        lastError = error
+        continue
+      }
+
       throw error
+    }
+
+    if (!data) {
+      console.error('Create page error: failed to generate unique slug', lastError)
+      return NextResponse.json(
+        { error: 'Failed to generate a unique page URL. Please try again.' },
+        { status: 500 }
+      )
     }
 
     // Return the page data including edit_token and slug
