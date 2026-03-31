@@ -14,9 +14,8 @@ export default function ClientPage({ page }) {
   const [activeTab, setActiveTab] = useState('pre-call')
 
   return (
-    <div className="text-deep-charcoal antialiased font-sans">
-      <div className="max-w-7xl mx-auto px-6 py-8 md:p-12 lg:p-16">
-        <main>
+    <main className="text-deep-charcoal antialiased font-sans">
+      {/* <div className="max-w-7xl mx-auto px-6 py-8 md:p-12 lg:p-16"> */}
           <Hero
             page={page}
             activeTab={activeTab}
@@ -30,8 +29,7 @@ export default function ClientPage({ page }) {
           {activeTab === 'post-call' ? <DailyWorkflow page={page} /> : null}
           {activeTab === 'post-call' ? <Investment page={page} /> : null}
           <CTA activeTab={activeTab} />
-        </main>
-      </div>
-    </div>
+      {/* </div> */}
+    </main>
   )
 }

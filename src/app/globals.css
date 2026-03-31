@@ -56,3 +56,8 @@ body {
 #F5F5F5), 
 #DAEAEE;
 }
+
+::selection {
+  background-color: var(--color-sky-blue);
+  color: var(--color-white);
+}
