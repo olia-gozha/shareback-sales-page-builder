@@ -1,6 +1,5 @@
 import { Menu, Plus, Search } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import useMounted from '@/lib/useMounted'
 
 const styles = {
   aside: "shrink-0 h-screen sticky top-0 bg-white bg-gradient-to-b from-mist/9 to-mist/9 flex flex-col transition-all duration-200 border-r border-r-slate/12",
@@ -23,7 +22,6 @@ export default function EditorSidebar({
   onSelectPage,
 })
 {
-  const isMounted = useMounted()
   const [isCollapsed, setIsCollapsed] = useState(false)
 
   // useEffect(() => {

@@ -190,7 +190,8 @@ export default function EditForm({ page }) {
 
       if (!res.ok) {
         const data = await res.json()
-        throw new Error(data.error || 'Save failed')
+        const details = data?.details ? `: ${data.details}` : ''
+        throw new Error((data?.error || 'Save failed') + details)
       }
 
       setSaved(true)
