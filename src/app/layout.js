@@ -59,7 +59,7 @@ export default function RootLayout({ children }) {
     <html
       suppressHydrationWarning
       lang="en"
-      className={`${soehne.variable} ${tiemposLightItalic.variable} h-full antialiased`}
+      className={`${soehne.variable} ${tiemposLightItalic.variable} ${tiemposLight.variable} h-full antialiased`}
     >
       <body suppressHydrationWarning className="min-h-full flex flex-col">
         <DevHydrationWarningFilter />

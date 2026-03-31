@@ -5,14 +5,14 @@
   --foreground: #061515;
 
   --font-sans: var(--font-soehne), sans-serif;
-  --font-serif: var(--font-tiempos-light-italic), serif;
-  --font-product: var(--font-dm-sans), sans-serif;
+  --font-serif: var(--font-tiempos-light), serif;
+  --font-serif-italic: var(--font-tiempos-light-italic), serif;
 }
 
 @theme {
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
-  --font-product: var(--font-product);
+  --font-serif-italic: var(--font-serif-italic);
 
   --color-deep-charcoal: #061515;
   --color-ocean: #5C8B9F;
