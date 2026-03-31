@@ -311,14 +311,13 @@ export default function EditForm({ page }) {
                   ref={el => (sectionRefs.current[0] = el)}
                   className="py-20 border border-transparent space-y-4 scroll-mt-2"
                 >
-                  {/* <legend className="text-sm font-normal text-deep-charcoal/48">General</legend> */}
-
                   <FormField
                     as="textarea"
                     label="Talk summary"
                     value={form.talk_summary}
                     onChange={(e) => updateField('talk_summary', e.target.value)}
                     rows={10}
+                    helper="Recommended size up to 500 characters. This will be shown in the post-talk summary and should include key talking points."
                     placeholder="Summary of the call with the client, key pain points, next steps, and any other relevant info."
                   />
                 </fieldset>
@@ -373,6 +372,7 @@ export default function EditForm({ page }) {
                       value={form.action_label}
                       onChange={(e) => updateField('action_label', e.target.value)}
                       placeholder="e.g. Book a demo"
+                      helper="Label for the call-to-action button that will appear in the post-talk summary for the next step."
                     />
                     <FormField
                       label="Action URL"
@@ -414,13 +414,15 @@ export default function EditForm({ page }) {
                         onChange={(e) => updateTeamMember(i, 'ai_focus', e.target.value)}
                         label="AI Focus"
                         wrapperClassName="gap-0"
+                        helper="Concise of AI focus, e.g. 'Relationship health & revenue expansion', 'technical deal acceleration'. Up to 5 words recommended."
                       />
                       <FormField
                         as="textarea"
                         value={member.description}
                         onChange={(e) => updateTeamMember(i, 'description', e.target.value)}
                         label="Description"
-                        rows={3}
+                        rows={8}
+                        helper="Brief description of AI focus and responsibilities in more detail for this specific team member. Up to 300 characters recommended."
                       />
                         <div className="flex justify-center mt-2">
                           <Button

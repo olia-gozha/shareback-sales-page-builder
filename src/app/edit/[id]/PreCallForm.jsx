@@ -47,12 +47,13 @@ export default function PreCallForm({
           label="Company summary"
           value={form.company_summary}
           onChange={(e) => updateField('company_summary', e.target.value)}
-          rows={4}
+          rows={10}
+          helper="Recommended size up to 500 characters. This will be shown in the pitch section to help the client understand the value proposition."
           placeholder="Rich text editor will go here — plain text for now"
         />
       </fieldset>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 pb-20">
         <Button
           onClick={handleSave}
           disabled={saving}

@@ -177,6 +177,7 @@ export default function NewPage({ onCreated }) {
           <FormField
             label="Company logo URL"
             type="url"
+            helper="Paste a URL to the company logo. It will be downloaded and hosted on our servers. Link to LinkedIn company image or similar for best results."
             value={form.company_logo}
             onChange={(e) => updateField('company_logo', e.target.value)}
             placeholder="Paste a URL to the company logo"
@@ -195,7 +196,8 @@ export default function NewPage({ onCreated }) {
           label="Company summary"
           value={form.company_summary}
           onChange={(e) => updateField('company_summary', e.target.value)}
-          rows={4}
+          rows={6}
+          helper="Recommended size up to 500 characters. This will be shown in the pitch section to help the client understand the value proposition."
           placeholder="Brief description of the company. A few lines of text."
         />
 

@@ -1,5 +1,6 @@
 export default function FormField({
   label,
+  helper,
   as = 'input',
   type = 'text',
   value,
@@ -16,6 +17,7 @@ export default function FormField({
   return (
     <label className={`flex flex-col gap-3 ${wrapperClassName}`.trim()}>
       {label ? <span className="text-base font-normal text-deep-charcoal/66">{label}</span> : null}
+      {helper ? <span className="text-sm font-normal text-deep-charcoal/48">{helper}</span> : null}
       {isTextArea ? (
         <textarea
           value={value}
