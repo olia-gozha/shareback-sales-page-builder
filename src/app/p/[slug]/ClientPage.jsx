@@ -23,7 +23,7 @@ export default function ClientPage({ page }) {
           />
 
           {activeTab === 'pre-call' ? <Problem /> : null}
-          {activeTab === 'pre-call' ? <Solution /> : null}
+          {activeTab === 'pre-call' ? <Solution page={page} /> : null}
           {activeTab === 'pre-call' ? <SolutionDetails /> : null}
           {activeTab === 'post-call' ? <CompanySetup page={page} /> : null}
           {activeTab === 'post-call' ? <DailyWorkflow page={page} /> : null}

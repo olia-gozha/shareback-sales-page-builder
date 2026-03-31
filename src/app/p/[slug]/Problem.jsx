@@ -1,6 +1,6 @@
 export default function Problem() {
   return (
-    <section className="px-10 py-18 pt-75 space-y-30">
+    <section className="px-10 py-20 pt-75 space-y-20">
       <div className="space-y-10">
         <h2 className="text-6xl md:text-8xl lg:text-[124px] font-serif tracking-[-0.04em]! leading-none text-deep-charcoal">
           40% of selling time lost to admin.

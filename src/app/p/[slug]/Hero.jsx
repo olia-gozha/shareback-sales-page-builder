@@ -37,7 +37,7 @@ export default function Hero({
   const isPostCall = activeTab === 'post-call'
 
   return (
-    <section className="px-10 py-18 bg-arctic-dome space-y-10">
+    <section className="px-10 py-20 bg-arctic-dome space-y-10">
       {/* Header */}
       <header className="sm:grid grid-cols-[18rem_minmax(0,1fr)] md:grid-cols-[20rem_minmax(0,1fr)] xl:grid-cols-[24rem_minmax(0,1fr)] gap-8 md:gap-10 xl:gap-20">
         <div className="flex flex-col sm:flex-row justify-center sm:justify-start text-center sm:text-left items-center gap-5">
