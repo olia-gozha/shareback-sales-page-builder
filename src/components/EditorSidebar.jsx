@@ -135,9 +135,9 @@ export default function EditorSidebar({
                     }`}
                   >
                     <p className="truncate whitespace-nowrap">{page.company_name || 'Untitled'}</p>
-                    <p className='text-deep-charcoal/48 whitespace-nowrap'>
+                    {/* <p className='text-deep-charcoal/48 whitespace-nowrap'>
                       {page.status || 'Pre-call'}
-                    </p>
+                    </p> */}
                   </button>
                 )
               })}
