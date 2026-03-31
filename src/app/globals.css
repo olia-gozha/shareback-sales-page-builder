@@ -45,3 +45,14 @@ body {
 *::after {
   letter-spacing: -0.01em;
 }
+
+/* Custom classes */
+
+.bg-arctic-dome {
+  background: radial-gradient(171.65% 92.49% at 50% -20.14%, rgba(255, 255, 255, 0) 35.8%, rgba(255, 255, 255, 0) 57.12%, 
+#FFFFFF 64.76%, 
+#DAEAEE 100%), linear-gradient(0deg, 
+#F5F5F5, 
+#F5F5F5), 
+#DAEAEE;
+}
