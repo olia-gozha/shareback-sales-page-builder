@@ -78,7 +78,7 @@ export default function Hero({
       {/* Headline */}
       <div className="grid xl:grid-cols-[24rem_minmax(0,1fr)] md:gap-10 xl:gap-20 pt-20 pb-50">
         <div className='col-start-2 space-y-15'>
-          <h1 className="max-w-199.5 text-6xl md:text-8xl lg:text-[110px] 2xl:text-[140px] 2xl:max-w-254 font-serif tracking-[-0.04em] leading-none text-deep-charcoal">
+          <h1 className="max-w-199.5 text-6xl md:text-8xl lg:text-[110px] 2xl:text-[140px] 2xl:max-w-254 font-serif tracking-[-0.04em]! leading-none text-deep-charcoal">
             {activeTab === 'pre-call' ? (
               <>
                 Let&rsquo;s bring deeply custom AI to <span className="font-serif-italic">your</span> firm
