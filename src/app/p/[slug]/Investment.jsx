@@ -22,45 +22,45 @@ export default function Investment({ page = {} }) {
       ]
 
   return (
-    <section className="max-w-6xl mx-auto px-6 py-24 md:py-32 font-sans bg-ghost fade-in text-deep-charcoal">
-      <div className="mb-16">
-        <h3 className="text-sm text-slate/70 mb-6 font-medium">Investment</h3>
+    <section className="bg-white px-10 py-20 pt-75 space-y-20">
+      <div className="space-y-10">
+        <h3 className="text-xl font-normal leading-none text-deep-charcoal/40 tracking-[-0.005em]!">Investment</h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl">
-          <div className="border border-slate/20 bg-white p-12 flex flex-col items-center justify-center text-center shadow-sm">
-            <div className="text-[5rem] md:text-[6rem] lg:text-[7rem] leading-none font-serif tracking-tight text-deep-charcoal">
+        <div className="flex flex-col lg:flex-row gap-5">
+          <div className="border border-ocean/20 p-13 flex flex-col items-center justify-center">
+            <div className="text-center text-[5rem] md:text-[6rem] lg:text-[7rem] leading-none font-serif tracking-tight text-deep-charcoal">
               {people}
             </div>
-            <div className="text-xs text-slate/88 mt-2 font-medium">
+            <div className="text-base text-deep-charcoal/60">
               people
             </div>
           </div>
 
-          <div className="border border-slate/20 bg-white p-12 flex flex-col items-center justify-center text-center shadow-sm">
-            <div className="text-[5rem] md:text-[6rem] lg:text-[7rem] leading-none font-serif tracking-tight text-deep-charcoal">
+          <div className="border border-ocean/20 bg-white p-12 flex flex-col items-center justify-center">
+            <div className="text-center text-[5rem] md:text-[6rem] lg:text-[7rem] leading-none font-serif tracking-tight text-deep-charcoal">
               {'\u00A3'}{price}
             </div>
-            <div className="text-xs text-slate/88 mt-2 font-medium">
+            <div className="text-base text-deep-charcoal/60">
               per person/month
             </div>
           </div>
 
-          <div className="bg-mist p-12 flex flex-col items-center justify-center text-center shadow-sm">
-            <div className="text-[5rem] md:text-[6rem] lg:text-[7rem] leading-none font-serif tracking-tight text-deep-charcoal">
+          <div className="bg-[#DAEAEE] p-12 flex flex-col items-center justify-center">
+            <div className="text-center text-[5rem] md:text-[6rem] lg:text-[7rem] leading-none font-serif tracking-tight text-deep-charcoal">
               {'\u00A3'}{formatYearly(yearlyTotal)}
             </div>
-            <div className="text-xs text-slate/88 mt-2 font-medium">
+            <div className="text-base text-deep-charcoal/60">
               yearly
             </div>
           </div>
         </div>
       </div>
 
-      <div className="mb-24 md:mb-32">
-        <h3 className="text-sm text-slate/70 mb-6 font-medium">Includes</h3>
+      <div className="space-y-10">
+        <h3 className="text-xl font-normal leading-none text-deep-charcoal/40 tracking-[-0.005em]!">Includes</h3>
         <ul className="space-y-3">
           {features.map((feature, index) => (
-            <li key={index} className="flex items-center text-deep-charcoal font-medium">
+            <li key={index} className="flex items-center text-deep-charcoal text-base tracking-[-0.02em]! leading-[150%]">
               <svg
                 className="w-4 h-4 mr-3 shrink-0 text-deep-charcoal"
                 viewBox="0 0 24 24"
@@ -78,10 +78,10 @@ export default function Investment({ page = {} }) {
         </ul>
       </div>
 
-      <hr className="border-t border-slate/20 w-full mb-24 md:mb-32" />
+      <hr className="border-t border-ocean/20 w-full mb-20 md:mb-28" />
 
-      <div>
-        <h3 className="text-sm text-slate/70 mb-8 font-medium">Our promise</h3>
+      <div className="space-y-10 py-10">
+        <h3 className="text-xl font-normal leading-none text-deep-charcoal/40 tracking-[-0.005em]!">Our promise</h3>
         <h2 className="text-6xl md:text-8xl lg:text-[7.5rem] leading-[0.95] font-serif tracking-tight text-deep-charcoal">
           Live in <span className="font-light">48</span> hours. <br className="hidden md:block" />
           We build with you ongoing.
