@@ -1,46 +1,47 @@
-function SharebackIcon() {
-  return (
-    <div className="w-6 h-6 rounded-full bg-white shadow-sm flex items-center justify-center shrink-0 relative z-10 border border-white/60">
-      <svg className="w-3.5 h-3.5 text-slate" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2L14.2 9.8L22 12L14.2 14.2L12 22L9.8 14.2L2 12L9.8 9.8L12 2Z" />
-      </svg>
-    </div>
-  )
-}
+// function SharebackIcon() {
+//   return (
+//     <div className="w-6 h-6 rounded-full bg-white shadow-sm flex items-center justify-center shrink-0 relative z-10 border border-white/60">
+//       <svg className="w-3.5 h-3.5 text-slate" viewBox="0 0 24 24" fill="currentColor">
+//         <path d="M12 2L14.2 9.8L22 12L14.2 14.2L12 22L9.8 14.2L2 12L9.8 9.8L12 2Z" />
+//       </svg>
+//     </div>
+//   )
+// }
 
-function ClientIcon({ companyLogo }) {
-  return (
-    <div className="w-6 h-6 rounded-full bg-white shadow-sm flex items-center justify-center shrink-0 overflow-hidden relative z-20 border border-white/60">
-      {companyLogo ? (
-        <img
-          src={companyLogo}
-          alt="Client logo"
-          className="w-full h-full object-contain p-1"
-        />
-      ) : (
-        <div className="w-2.5 h-2.5 bg-deep-charcoal rounded-[2px]"></div>
-      )}
-    </div>
-  )
-}
+// function ClientIcon({ companyLogo }) {
+//   return (
+//     <div className="w-6 h-6 rounded-full bg-white shadow-sm flex items-center justify-center shrink-0 overflow-hidden relative z-20 border border-white/60">
+//       {companyLogo ? (
+//         <img
+//           src={companyLogo}
+//           alt="Client logo"
+//           className="w-full h-full object-contain p-1"
+//         />
+//       ) : (
+//         <div className="w-2.5 h-2.5 bg-deep-charcoal rounded-[2px]"></div>
+//       )}
+//     </div>
+//   )
+// }
+import Process from "./Process"
 
 export default function DailyWorkflow({ page = {} }) {
 
   return (
-    <section className="bg-mist w-full py-24 md:py-32 px-6 md:px-12 lg:px-16 text-deep-charcoal font-sans fade-in">
-      <div className="max-w-4xl mx-auto">
-        {/* Top Section */}
-        <div className="mb-20">
-          <p className="text-sm font-medium text-slate/70 mb-6">
-            A day on Shareback
-          </p>
-          <h2 className="text-3xl md:text-5xl lg:text-[2.75rem] font-light leading-snug tracking-tight text-deep-charcoal/88">
+    <section className="bg-[#DAEAEE] px-10 py-20 pt-75 space-y-20">
+        <div className="space-y-10">
+          <div className="text-xl font-normal leading-none text-deep-charcoal/40 tracking-[-0.005em]!">A day on Shareback</div>
+          <h2 className="max-w-248 space-y-10 text-5xl font-light tracking-[-0.02em]! leading-[120%] text-deep-charcoal">
             Morning brief with your meetings, contacts, and emails. Meeting prep before every call. Draft replies waiting. Deliverables in minutes. Your AI learns how you work and gets better every week.
           </h2>
         </div>
 
-        {/* Timeline Section */}
-        <div>
+        <Process 
+          showHeading={false}
+          theme="dark-on-light"
+          page={page} />
+
+        {/* <div>
           <p className="text-sm font-medium text-slate/70 mb-6">
             How it works
           </p>
@@ -102,8 +103,7 @@ export default function DailyWorkflow({ page = {} }) {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </div> */}
     </section>
   )
 }
