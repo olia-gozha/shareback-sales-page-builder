@@ -1,10 +1,12 @@
-import { supabaseAdmin } from '@/lib/supabase'
+import { getSupabaseAdmin } from '@/lib/supabase'
 import { notFound } from 'next/navigation'
 import { connection } from 'next/server'
 import ClientPage from './ClientPage'
 
 // This runs on the server at request time
 async function getPage(slug) {
+  const supabaseAdmin = getSupabaseAdmin()
+
   // Ensure this route is rendered at request time (avoids build-time prerendering)
   // so edits in Supabase are reflected immediately.
   await connection()

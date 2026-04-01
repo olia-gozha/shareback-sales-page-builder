@@ -1,4 +1,4 @@
-import { supabaseAdmin } from '@/lib/supabase'
+import { getSupabaseAdmin } from '@/lib/supabase'
 import { NextResponse } from 'next/server'
 import { randomBytes } from 'node:crypto'
 
@@ -19,6 +19,8 @@ function generateGibberishSlug() {
 
 export async function GET() {
   try {
+    const supabaseAdmin = getSupabaseAdmin()
+
     const { data, error } = await supabaseAdmin
       .from('pages')
       .select('id, slug, company_name, status, edit_token')
@@ -44,6 +46,7 @@ export async function GET() {
 
 export async function POST(request) {
   try {
+    const supabaseAdmin = getSupabaseAdmin()
     const body = await request.json()
 
     let data = null

@@ -1,8 +1,9 @@
-import { supabaseAdmin } from '@/lib/supabase'
+import { getSupabaseAdmin } from '@/lib/supabase'
 import { notFound } from 'next/navigation'
 import EditForm from './EditForm'
 
 async function getPage(id) {
+  const supabaseAdmin = getSupabaseAdmin()
   const { data, error } = await supabaseAdmin
     .from('pages')
     .select('*')

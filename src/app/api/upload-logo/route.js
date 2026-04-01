@@ -1,8 +1,9 @@
-import { supabaseAdmin } from '@/lib/supabase'
+import { getSupabaseAdmin } from '@/lib/supabase'
 import { NextResponse } from 'next/server'
 
 export async function POST(request) {
   try {
+    const supabaseAdmin = getSupabaseAdmin()
     const { logoUrl, pageId } = await request.json()
 
     // Download the image from the provided URL

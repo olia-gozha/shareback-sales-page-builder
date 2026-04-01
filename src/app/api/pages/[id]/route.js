@@ -1,4 +1,4 @@
-import { supabaseAdmin } from '@/lib/supabase'
+import { getSupabaseAdmin } from '@/lib/supabase'
 import { NextResponse } from 'next/server'
 
 function nullIfEmptyString(value) {
@@ -86,6 +86,7 @@ function normalizeUpdateFields(fields) {
 
 export async function GET(request, { params }) {
   try {
+    const supabaseAdmin = getSupabaseAdmin()
     const { id } = await params
     const { searchParams } = new URL(request.url)
     const token = searchParams.get('token')
@@ -129,6 +130,7 @@ export async function GET(request, { params }) {
 
 export async function PUT(request, { params }) {
   try {
+    const supabaseAdmin = getSupabaseAdmin()
     const { id } = await params
     const body = await request.json()
     const { token, ...fields } = body
