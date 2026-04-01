@@ -65,6 +65,7 @@ export default function EditForm({ page }) {
 
   // Initialize form state from existing page data
   const [form, setForm] = useState({
+    status: page.status || 'pre-call',
     company_name: page.company_name || '',
     company_summary: page.company_summary || '',
     company_logo: page.company_logo || '',
@@ -310,8 +311,29 @@ export default function EditForm({ page }) {
                 <fieldset
                   id="post-general"
                   ref={el => (sectionRefs.current[0] = el)}
-                  className="py-20 border border-transparent space-y-4 scroll-mt-2"
+                  className="py-20 border border-transparent space-y-20 scroll-mt-2"
                 >
+                  <div className="flex items-center justify-between gap-4 rounded-lg border border-ocean/18 bg-ocean/3 px-5 py-4">
+                    <div className="space-y-1">
+                      <p className="text-sm font-medium text-deep-charcoal">Post-talk summary tab</p>
+                      <p className="text-sm text-deep-charcoal/56">
+                        {form.status === 'post-call' ? 'Visible on client page' : 'Hidden on client page'}
+                      </p>
+                    </div>
+
+                    <label className="relative inline-flex items-center cursor-pointer select-none">
+                      <input
+                        type="checkbox"
+                        role="switch"
+                        aria-label="Toggle Post-talk summary tab visibility"
+                        checked={form.status === 'post-call'}
+                        onChange={(e) => updateField('status', e.target.checked ? 'post-call' : 'pre-call')}
+                        className="peer sr-only"
+                      />
+                      <span className="h-7 w-12 rounded-full bg-mist shadow-[inset_0_1px_2px_rgba(0,0,0,0.08)] transition-all duration-250 ease-out peer-checked:bg-deep-charcoal peer-checked:shadow-[inset_0_1px_2px_rgba(0,0,0,0.16),0_0_0_4px_rgba(106,148,157,0.10)] peer-focus-visible:ring-3 peer-focus-visible:ring-ocean/25" />
+                      <span className="absolute left-1 top-1 h-5 w-5 rounded-full bg-white shadow-sm shadow-ocean/20 transition-all duration-250 ease-out peer-checked:translate-x-5 peer-active:scale-[0.96]" />
+                    </label>
+                  </div>
                   <FormField
                     as="textarea"
                     label="Talk summary"
@@ -551,8 +573,6 @@ export default function EditForm({ page }) {
                     fullWidth={false}
                     className="py-3 px-6"
                   />
-                  {saved && <span className="text-green-600 text-sm">Saved!</span>}
-                  {error && <span className="text-red-600 text-sm">{error}</span>}
                 </div>
               </div>
             </div>
@@ -563,6 +583,7 @@ export default function EditForm({ page }) {
         <div className='order-1 w-full lg:order-2 lg:w-78 lg:min-w-78 lg:sticky lg:top-4 lg:self-start lg:h-fit'>
           <CompanyProfile
             page={page}
+            status={form.status}
             createdLabel={createdLabel}
             onPreviewPage={handlePreviewPage}
             onCopyLink={handleCopyLink}

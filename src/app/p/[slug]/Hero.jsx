@@ -9,6 +9,7 @@ export default function Hero({
   page,
   activeTab,
   onTabChange,
+  hasPostTalkSummary,
 }) {
   const TabButton = ({ label, onClick, isActive }) => (
     <button
@@ -73,11 +74,13 @@ export default function Hero({
             onClick={() => onTabChange?.('pre-call')}
             isActive={activeTab === 'pre-call'}
           />
-          <TabButton
-            label="Post-talk summary"
-            onClick={() => onTabChange?.('post-call')}
-            isActive={activeTab === 'post-call'}
-          />
+          {hasPostTalkSummary ? (
+            <TabButton
+              label="Post-talk summary"
+              onClick={() => onTabChange?.('post-call')}
+              isActive={activeTab === 'post-call'}
+            />
+          ) : null}
         </nav>
       </AppearOnView>
 

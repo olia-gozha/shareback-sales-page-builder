@@ -4,14 +4,16 @@ import Button from '@/components/Button'
 
 export default function CompanyProfile({
   page,
+  status,
   createdLabel,
   onPreviewPage,
   onCopyLink,
   onCopySecretEditLink,
   className = '',
 }) {
-  const statusLabel = page.status
-    ? page.status.charAt(0).toUpperCase() + page.status.slice(1)
+  const currentStatus = status || page.status
+  const statusLabel = currentStatus
+    ? currentStatus.charAt(0).toUpperCase() + currentStatus.slice(1)
     : '-'
 
   return (

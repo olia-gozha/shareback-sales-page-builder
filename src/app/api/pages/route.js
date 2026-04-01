@@ -59,6 +59,7 @@ export async function POST(request) {
         .from('pages')
         .insert({
           slug,
+          status: 'pre-call',
           company_name: body.company_name,
           company_summary: body.company_summary || null,
           company_logo: body.company_logo || null,
