@@ -1,17 +1,19 @@
+import AppearOnView from '@/components/AppearOnView'
+
 export default function SolutionDetails() {
   return (
     <section className="bg-white px-10 py-20 pt-75 space-y-20">
-      <div className="space-y-10">
+      <AppearOnView as="div" animation="up" delay={20} className="space-y-10">
         {/* Label */}
         <div className="text-xl font-normal leading-none text-deep-charcoal/40 tracking-[-0.005em]!">Solution</div>
         <h2 className="text-6xl md:text-8xl lg:text-[124px] font-serif tracking-[-0.04em]! leading-none text-deep-charcoal">
           One surface. Every system,<br className="hidden md:block" />
           relationship, and context unified.
         </h2>
-      </div>
+      </AppearOnView>
 
       <div className="space-y-5">
-        <div className="border border-ocean/20 p-8 md:p-12 lg:p-15 grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-y-0">
+        <AppearOnView as="div" animation="up" delay={110} className="border border-ocean/20 p-8 md:p-12 lg:p-15 grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-y-0">
           {/* Left Column (Visuals) */}
           <div className="md:col-span-4 flex flex-col gap-8">
             <h3 className="space-x-1 text-base font-medium text-deep-charcoal tracking-[-0.02em]! leading-[114%]"><span>01</span> <span>&middot;</span> <span>All the best of AI</span></h3>
@@ -40,10 +42,10 @@ export default function SolutionDetails() {
               <p>When AI unlocks a new capability, we figure out how it applies to your team specifically and add it.</p>
             </div>
           </div>
-        </div>
+        </AppearOnView>
 
         {/* Card 02: Your data */}
-        <div className="border border-ocean/20 p-8 md:p-12 lg:p-15 grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-y-0">
+        <AppearOnView as="div" animation="up" delay={170} className="border border-ocean/20 p-8 md:p-12 lg:p-15 grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-y-0">
           {/* Left Column (Visuals) */}
           <div className="md:col-span-4 flex flex-col gap-8">
             <h3 className="space-x-1 text-base font-medium text-deep-charcoal tracking-[-0.02em]! leading-[114%]"><span>02</span> <span>&middot;</span> <span>Your data</span></h3>
@@ -80,10 +82,10 @@ export default function SolutionDetails() {
               <p>E.g. Deep open source, newsletters, Pitchbook, Dakota, eVestment etc</p>
             </div>
           </div>
-        </div>
+        </AppearOnView>
 
         {/* Card 03: Your work context */}
-        <div className="border border-ocean/20 p-8 md:p-12 lg:p-15 grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-y-0">
+        <AppearOnView as="div" animation="up" delay={230} className="border border-ocean/20 p-8 md:p-12 lg:p-15 grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-y-0">
           {/* Left Column (Visuals) */}
           <div className="md:col-span-4 flex flex-col gap-8">
             <h3 className="space-x-1 text-base font-medium text-deep-charcoal tracking-[-0.02em]! leading-[114%]"><span>03</span> <span>&middot;</span> <span>Your work context</span></h3>
@@ -111,7 +113,7 @@ export default function SolutionDetails() {
               <p>Every answer and action is through your lens because it understands not just what to do but <span className=" font-serif-italic">why it is doing something.</span></p>
             </div>
           </div>
-        </div>
+        </AppearOnView>
       </div>
     </section>
   )

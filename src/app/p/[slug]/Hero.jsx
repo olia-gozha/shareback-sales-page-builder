@@ -3,6 +3,7 @@
 import NextAction from './NextAction'
 import PersonPill from './PersonPill'
 import CompanySummary from './CompanySummary'
+import AppearOnView from '@/components/AppearOnView'
 
 export default function Hero({
   page,
@@ -39,7 +40,12 @@ export default function Hero({
   return (
     <section className="px-10 py-20 bg-arctic-dome space-y-10">
       {/* Header */}
-      <header className="sm:grid grid-cols-[18rem_minmax(0,1fr)] md:grid-cols-[20rem_minmax(0,1fr)] xl:grid-cols-[24rem_minmax(0,1fr)] gap-8 md:gap-10 xl:gap-20">
+      <AppearOnView
+        as="header"
+        animation="up"
+        delay={20}
+        className="sm:grid grid-cols-[18rem_minmax(0,1fr)] md:grid-cols-[20rem_minmax(0,1fr)] xl:grid-cols-[24rem_minmax(0,1fr)] gap-8 md:gap-10 xl:gap-20"
+      >
         <div className="flex flex-col sm:flex-row justify-center sm:justify-start text-center sm:text-left items-center gap-5">
           <div className="w-25 h-25 rounded-full bg-white border border-slate-100 flex items-center justify-center overflow-hidden shrink-0">
             {page.company_logo ? (
@@ -73,10 +79,16 @@ export default function Hero({
             isActive={activeTab === 'post-call'}
           />
         </nav>
-      </header>
+      </AppearOnView>
 
       {/* Headline */}
-      <div className="grid xl:grid-cols-[24rem_minmax(0,1fr)] md:gap-10 xl:gap-20 pt-20 pb-50">
+      <AppearOnView
+        key={`hero-headline-${activeTab}`}
+        as="div"
+        animation="up"
+        delay={90}
+        className="grid xl:grid-cols-[24rem_minmax(0,1fr)] md:gap-10 xl:gap-20 pt-20 pb-50"
+      >
         <div className='col-start-2 space-y-15'>
           <h1 className="max-w-199.5 text-6xl md:text-8xl lg:text-[110px] 2xl:text-[140px] 2xl:max-w-254 font-serif tracking-[-0.04em]! leading-none text-deep-charcoal">
             {activeTab === 'pre-call' ? (
@@ -103,12 +115,12 @@ export default function Hero({
               ) : null
             }
         </div>
-      </div>
+      </AppearOnView>
 
       {/* Executive Summary vs Features */}
       <>
         {isPreCall ? (
-          <section className='space-y-10 pb-15'>
+          <AppearOnView as="section" animation="up" delay={150} className='space-y-10 pb-15'>
             <h3 className="text-xl font-normal leading-none text-deep-charcoal/40 tracking-[-0.005em]!">Executive summary</h3>
             <div className="max-w-248 space-y-10 text-5xl font-light tracking-[-0.02em]! leading-[120%] text-deep-charcoal">
               <div>
@@ -132,19 +144,19 @@ export default function Hero({
                 Half the cost of typical AI deployment. In five days.
               </p>
             </div>
-          </section>
+          </AppearOnView>
         ) : null}
 
         {isPostCall ? (
           Array.isArray(page.features) && page.features.length > 0 ? (
-            <section className='space-y-10 pb-15'>
+            <AppearOnView as="section" animation="up" delay={150} className='space-y-10 pb-15'>
               <h3 className="text-xl font-normal leading-none text-deep-charcoal/40 tracking-[-0.005em]!">Here&rsquo;s what we&rsquo;d build</h3>
               <ul className="list-none max-w-248 space-y-6 text-5xl font-light tracking-[-0.02em]! leading-[120%] text-deep-charcoal">
                 {page.features.map((feature, index) => (
                   <li key={index}>{feature}</li>
                 ))}
               </ul>
-            </section>
+            </AppearOnView>
           ) : null
         ) : null}
       </>
@@ -152,7 +164,7 @@ export default function Hero({
       {/* Footer */}
       <div className="border-t border-ocean/20">
         {isPreCall ? (
-          <footer className="pt-12 border-t border-slate-200/60 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 text-left pb-6">
+          <AppearOnView as="footer" animation="up" delay={230} className="pt-12 border-t border-slate-200/60 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 text-left pb-6">
             <div className="flex flex-col gap-2">
               <span className="text-base text-deep-charcoal/40 tracking-[-0.005em]! leading-none">Founded</span>
               <span className="text-base text-deep-charcoal tracking-[-0.005em]! leading-[150%]">2023</span>
@@ -191,15 +203,17 @@ export default function Hero({
                 <path d="M31.8008 3C47.7064 3.00021 60.6006 15.8951 60.6006 31.8008C60.6004 47.7063 47.7063 60.6004 31.8008 60.6006C15.8951 60.6006 3.00021 47.7064 3 31.8008C3 15.895 15.895 3 31.8008 3ZM31.8008 4.60059C16.7786 4.60059 4.60059 16.7786 4.60059 31.8008C4.6008 46.8227 16.7788 59 31.8008 59C46.8226 58.9998 58.9998 46.8226 59 31.8008C59 16.7788 46.8227 4.6008 31.8008 4.60059ZM20.5791 32.6006C22.5607 32.6006 23.1217 33.787 23.2676 34.5039L21.9902 34.8184C21.9564 34.4151 21.5528 33.7871 20.6123 33.7871C19.874 33.7874 19.4145 34.1351 19.4141 34.6943C19.4141 36.1166 23.3225 35.3449 23.3232 38.1104C23.3232 39.2751 22.3489 40.1493 20.5684 40.1494C19.1015 40.1493 18.0926 39.5336 17.667 39.1641L18.5068 38.1328C18.8316 38.424 19.5826 38.9842 20.6016 38.9844C21.4528 38.9844 21.9121 38.6592 21.9121 38.1328C21.9109 36.4986 18.0029 37.3373 18.0029 34.7617C18.0033 33.5302 19.034 32.6008 20.5791 32.6006ZM34.5684 32.6006C36.7407 32.6007 37.513 34.1574 37.5244 35.2773L36.2031 35.4785C36.2028 34.7842 35.7662 33.8322 34.5908 33.832C33.4599 33.8322 32.5636 34.7738 32.5635 36.375C32.5636 38.189 33.6386 38.9168 34.792 38.917C35.744 38.917 36.4052 38.3015 36.7412 37.8535L37.5811 38.7158C37.2786 39.1414 36.4049 40.1493 34.7588 40.1494C32.5975 40.1492 31.13 38.7267 31.1299 36.375C31.13 34.0794 32.5639 32.6008 34.5684 32.6006ZM27.2109 32.6006C29.3052 32.6006 30.7723 34.0568 30.7725 36.375C30.7724 38.6821 29.3053 40.1377 27.2109 40.1377C25.1394 40.1373 23.6612 38.6818 23.6611 36.375C23.6613 34.0571 25.1395 32.601 27.2109 32.6006ZM42.2129 32.6006C43.8143 32.6006 44.8563 33.5755 44.8564 35.0312C44.8562 36.5542 43.5789 37.7075 42.3135 38.5811C42.1566 38.6931 41.8542 38.8727 41.7646 38.9062L41.7871 38.9512C41.8655 38.94 42.0899 38.917 42.3809 38.917H45.0352V40.0703H39.6592V39.085C41.4064 37.7858 43.4336 36.6992 43.4336 35.0752C43.4333 34.3252 42.9518 33.832 42.1904 33.832C41.4741 33.8322 40.9924 34.2364 40.9922 34.8408C40.9923 34.9412 41.0148 35.0529 41.0371 35.1201L39.6816 35.3555C39.648 35.2768 39.5918 35.1084 39.5918 34.7734C39.592 33.4858 40.6453 32.6008 42.2129 32.6006ZM27.2109 33.832C25.9794 33.8324 25.0832 34.7852 25.083 36.375C25.0831 37.9537 25.9794 38.9166 27.2109 38.917C28.4541 38.917 29.3505 37.9541 29.3506 36.375C29.3504 34.7848 28.454 33.832 27.2109 33.832ZM30.2178 23C32.39 23 33.1632 24.5568 33.1748 25.6768L31.8535 25.8789C31.8534 25.1845 31.416 24.2324 30.2402 24.2324C29.1095 24.2328 28.2132 25.1736 28.2129 26.7744C28.2129 28.5886 29.2889 29.3172 30.4424 29.3174C31.3942 29.3173 32.0547 28.7009 32.3906 28.2529L33.2305 29.1152C32.9281 29.5408 32.0546 30.5488 30.4082 30.5488C28.247 30.5485 26.7793 29.1262 26.7793 26.7744C26.7796 24.4791 28.2136 23.0003 30.2178 23ZM24.2988 30.4707H22.8652L22.3057 28.8125H19.4834L18.9229 30.4707H17.4668L20.1436 23.0781H21.6445L24.2988 30.4707ZM26.0488 30.4707H24.6484V23.0781H26.0488V30.4707ZM36.3691 23.0781C38.2729 23.0781 39.404 23.9635 39.4043 25.6543C39.4043 27.3566 38.2512 28.2421 36.5488 28.2422H35.2158V30.4707H33.8047V23.0781H36.3691ZM45.6055 30.4707H44.1719L43.6123 28.8125H40.7891L40.2295 30.4707H38.7734L41.4502 23.0781H42.9512L45.6055 30.4707ZM20.8721 24.5566C20.8161 24.8365 20.7268 25.1506 20.6484 25.3857L19.8525 27.7266H21.9355L21.1299 25.375C21.0515 25.151 20.9724 24.8364 20.9053 24.5566H20.8721ZM42.1787 24.5566C42.1227 24.8365 42.0325 25.1506 41.9541 25.3857L41.1592 27.7266H43.2422L42.4355 25.375C42.3572 25.151 42.2791 24.8364 42.2119 24.5566H42.1787ZM35.2158 27.1104H36.291C37.3662 27.1104 37.9824 26.5951 37.9824 25.6543C37.9821 24.7587 37.3773 24.21 36.2354 24.21H35.2158V27.1104Z" />
               </svg>
             </div>
-          </footer>
+          </AppearOnView>
         ) : null}
 
         {isPostCall ? (
-          <NextAction
-            actionLabel={page.action_label}
-            actionLink={page.action_link}
-            nextStepDate={page.next_step_date}
-          />
+          <AppearOnView as="div" animation="up" delay={230}>
+            <NextAction
+              actionLabel={page.action_label}
+              actionLink={page.action_link}
+              nextStepDate={page.next_step_date}
+            />
+          </AppearOnView>
         ) : null}
       </div>
     </section>

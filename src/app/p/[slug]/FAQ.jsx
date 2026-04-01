@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from 'react'
+import AppearOnView from '@/components/AppearOnView'
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0)
@@ -30,18 +31,21 @@ export default function FAQ() {
 
   return (
     <div className="space-y-15 pb-15">
-      <div className="space-y-10">
+      <AppearOnView as="div" animation="up" delay={20} className="space-y-10">
         <div className="text-xl font-normal leading-none text-white/60 tracking-[-0.005em]!">
           What&rsquo;s else</div>
         <h2 className="max-w-236 space-y-10 text-5xl font-light tracking-[-0.02em]! leading-[120%] text-white">
           Questions teams ask before rollout
         </h2>
-      </div>
+      </AppearOnView>
 
       <div className="space-y-4 max-w-180">
         {items.map((item, index) => (
-          <article 
+          <AppearOnView
             key={item.question} 
+            as="article"
+            animation="up"
+            delay={90 + index * 45}
             className="border-b border-b-mist/20 pt-2 pb-5 text-white transition-colors duration-300 hover:bg-linear-to-t hover:from-mist/7 hover:to-mist/0"
           >
             <button
@@ -58,7 +62,7 @@ export default function FAQ() {
             >
               <p className="min-h-0 text-base font-normal leading-[132%] tracking-normal!">{item.answer}</p>
             </div>
-          </article>
+          </AppearOnView>
         ))}
       </div>
     </div>

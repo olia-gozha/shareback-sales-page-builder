@@ -1,7 +1,9 @@
+import AppearOnView from '@/components/AppearOnView'
+
 export default function Solution({ page }) {
   return (
     <section className="bg-deep-charcoal px-10 py-20 pt-75 space-y-20">
-      <div className="space-y-10">
+      <AppearOnView as="div" animation="up" delay={20} className="space-y-10">
         <div className="text-xl font-normal leading-none text-ghost/36 tracking-[-0.005em]!">Solution</div>
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <h2 className="text-6xl md:text-8xl lg:text-[124px] font-serif tracking-[-0.04em]! leading-none text-ghost">
@@ -12,10 +14,10 @@ export default function Solution({ page }) {
             <p><span className="text-ghost">{page?.company_name}</span> owns the relationship.</p>
           </div>
         </div>
-      </div>
+      </AppearOnView>
 
       {/* Data Card */}
-      <div className="border border-ghost/10 p-10">
+      <AppearOnView as="div" animation="up" delay={120} className="border border-ghost/10 p-10">
         <div className="grid grid-cols-2 md:grid-cols-10 md:gap-y-0 gap-y-2">
           {/* Table Headers */}
           <div className="md:col-span-2 text-base font-normal text-ghost/40 py-4 pl-6.5">
@@ -81,13 +83,13 @@ export default function Solution({ page }) {
             One question across email, CRM, calendar, and news. One answer
           </div>
         </div>
-      </div>
+      </AppearOnView>
 
       {/* Footer Text */}
-      <p className="text-2xl text-ghost/60 text-normal tracking-[-0.005em]! leading-[150%] max-w-160">
+      <AppearOnView as="p" animation="up" delay={190} className="text-2xl text-ghost/60 text-normal tracking-[-0.005em]! leading-[150%] max-w-160">
         CRM management, research, outreach, conference prep, <br className="hidden md:block" />
         internal coordination, follow-ups, daily briefs <span className="font-serif-italic">done for you.</span>
-      </p>
+      </AppearOnView>
     </section>
   )
 }

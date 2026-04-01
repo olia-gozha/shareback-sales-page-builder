@@ -1,7 +1,9 @@
+import AppearOnView from '@/components/AppearOnView'
+
 export default function Problem() {
   return (
     <section className="px-10 py-20 pt-75 space-y-20">
-      <div className="space-y-10">
+      <AppearOnView as="div" animation="up" delay={20} className="space-y-10">
         <h2 className="text-6xl md:text-8xl lg:text-[124px] font-serif tracking-[-0.04em]! leading-none text-deep-charcoal">
           40% of selling time lost to admin.
         </h2>
@@ -9,10 +11,10 @@ export default function Problem() {
           Expensive producers doing low-leverage, operational tasks <br className="hidden md:block" />
           instead of high-impact selling
         </p>
-      </div>
+      </AppearOnView>
 
       {/* Data Card */}
-      <div className="border border-ocean/20 bg-white p-10">
+      <AppearOnView as="div" animation="up" delay={120} className="border border-ocean/20 bg-white p-10">
         <div className="grid grid-cols-2 md:grid-cols-10 md:gap-y-0 gap-y-2">
           {/* Table Headers */}
           <div className="md:col-span-2 text-base font-normal text-deep-charcoal/60 py-4 pl-6.5">
@@ -78,7 +80,7 @@ export default function Problem() {
             Mental bandwidth consumed by searching, coordinating, and proving activity
           </div>
         </div>
-      </div>
+      </AppearOnView>
     </section>
   )
 }

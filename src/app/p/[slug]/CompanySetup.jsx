@@ -1,20 +1,22 @@
+import AppearOnView from '@/components/AppearOnView'
+
 export default function CompanySetup({ page }) {
   return (
     <section className="bg-white px-10 py-20 pt-75 space-y-20">
-      <div className="space-y-10">
+      <AppearOnView as="div" animation="up" delay={20} className="space-y-10">
         <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-light tracking-tight mb-16 md:mb-24">
           {page.company_name} setup
         </h2>
-      </div>
+      </AppearOnView>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
         {/* Left Column: Team */}
-        <div className="lg:col-span-8 space-y-5">
+        <AppearOnView as="div" animation="up" delay={100} className="lg:col-span-8 space-y-5">
           <h3 className="text-xl font-normal leading-none text-deep-charcoal/40 tracking-[-0.005em]!">Team</h3>
 
           <div className="space-y-6">
             {page.team?.map((member, index) => (
-              <div key={index} className="border border-ocean/20 p-8 md:p-12 lg:p-15">
+              <AppearOnView key={index} as="div" animation="up" delay={160 + index * 45} className="border border-ocean/20 p-8 md:p-12 lg:p-15">
                 {/* Name & Role */}
                 <div className="space-y-2 pb-10">
                   <h4 className="text-base font-medium text-deep-charcoal tracking-[-0.005em]! leading-none">{member.full_name}</h4>
@@ -44,13 +46,13 @@ export default function CompanySetup({ page }) {
                     {member.description}
                   </div>
                 </div>
-              </div>
+              </AppearOnView>
             ))}
           </div>
-        </div>
+        </AppearOnView>
 
         {/* Right Column: World */}
-        <div className="lg:col-span-4 space-y-10 lg:px-10">
+        <AppearOnView as="div" animation="left" delay={140} className="lg:col-span-4 space-y-10 lg:px-10">
           <h3 className="text-xl font-normal leading-none text-deep-charcoal/40 tracking-[-0.005em]!">World</h3>
 
           <div className="space-y-10">
@@ -79,7 +81,7 @@ export default function CompanySetup({ page }) {
               </div>
             )}
           </div>
-        </div>
+        </AppearOnView>
       </div>
     </section>
   )

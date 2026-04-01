@@ -15,7 +15,6 @@ export default function ClientPage({ page }) {
 
   return (
     <main className="text-deep-charcoal antialiased font-sans">
-      {/* <div className="max-w-7xl mx-auto px-6 py-8 md:p-12 lg:p-16"> */}
           <Hero
             page={page}
             activeTab={activeTab}
