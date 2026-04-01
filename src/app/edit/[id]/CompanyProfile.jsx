@@ -51,13 +51,13 @@ export default function CompanyProfile({
           showIcon={true}
           iconName="Link"
         />
-        {/* <Button
+        <Button
           idleLabel="Copy secret edit link"
           onClick={onCopySecretEditLink}
           variant="ghost"
           fullWidth={false}
           className="px-0! text-sm"
-        /> */}
+        />
       </div>
     </div>
   )

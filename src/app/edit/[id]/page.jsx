@@ -30,5 +30,9 @@ export default async function EditPage({ params, searchParams }) {
     )
   }
 
-  return <EditForm page={page} />
+  return (
+    <div className='px-9 py-4'>
+      <EditForm page={page} />
+    </div>
+  )
 }
