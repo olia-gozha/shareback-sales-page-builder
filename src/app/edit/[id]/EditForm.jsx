@@ -198,6 +198,7 @@ export default function EditForm({ page }) {
       setTimeout(() => setSaved(false), 3000)
     } catch (err) {
       setError(err.message)
+      throw err
     } finally {
       setSaving(false)
     }
@@ -543,6 +544,8 @@ export default function EditForm({ page }) {
                     onClick={handleSave}
                     disabled={saving}
                     isLoading={saving}
+                    actionType="save"
+                    errorLabel="Save failed"
                     idleLabel="Save changes"
                     loadingLabel="Saving..."
                     fullWidth={false}

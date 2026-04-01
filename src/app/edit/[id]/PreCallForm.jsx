@@ -58,6 +58,8 @@ export default function PreCallForm({
           onClick={handleSave}
           disabled={saving}
           isLoading={saving}
+          actionType="save"
+          errorLabel="Save failed"
           idleLabel="Save changes"
           loadingLabel="Saving..."
           fullWidth={false}

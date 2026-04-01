@@ -80,6 +80,7 @@ export default function NewPage({ onCreated }) {
     } catch (err) {
       console.error('[NewPage] Create flow error', err)
       setError(err.message)
+      throw err
     } finally {
       console.log('[NewPage] Create flow finished')
       setSaving(false)
@@ -106,6 +107,10 @@ export default function NewPage({ onCreated }) {
                   `${window.location.origin}${result.publicUrl}`
                 )}
                 idleLabel={null}
+                loadingLabel={null}
+                actionType="copy"
+                successLabel="Copied!"
+                errorLabel="Copy failed"
                 variant="secondary"
                 fullWidth={false}
                 showIcon={true}
@@ -126,6 +131,10 @@ export default function NewPage({ onCreated }) {
                   `${window.location.origin}${result.editUrl}`
                 )}
                 idleLabel={null}
+                loadingLabel={null}
+                actionType="copy"
+                successLabel="Copied!"
+                errorLabel="Copy failed"
                 variant="secondary"
                 fullWidth={false}
                 showIcon={true}
@@ -137,7 +146,7 @@ export default function NewPage({ onCreated }) {
 
           <div className="flex">
             <Button
-              href={result.editUrl}
+              onClick={() => window.open(result.editUrl, '_blank', 'noopener,noreferrer')}
               idleLabel="Edit page"
               fullWidth={false}
               showIcon={true}
@@ -203,7 +212,16 @@ export default function NewPage({ onCreated }) {
 
         {error && <p className="text-red-600 text-sm">{error}</p>}
 
-        <Button onClick={handleCreate} disabled={saving} isLoading={saving} />
+        <Button
+          onClick={handleCreate}
+          disabled={saving}
+          isLoading={saving}
+          actionType="send"
+          idleLabel="Create page"
+          loadingLabel="Creating..."
+          successLabel="Created!"
+          errorLabel="Create failed"
+        />
       </div>
     </main>
   )

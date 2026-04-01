@@ -45,6 +45,8 @@ export default function CompanyProfile({
         <Button
           idleLabel="Copy preview link"
           onClick={onCopyLink}
+          actionType="copy"
+          errorLabel="Copy failed"
           variant="secondary"
           fullWidth={false}
           className="text-sm py-3! pr-4! pl-3!"
@@ -54,6 +56,8 @@ export default function CompanyProfile({
         <Button
           idleLabel="Copy secret edit link"
           onClick={onCopySecretEditLink}
+          actionType="copy"
+          errorLabel="Copy failed"
           variant="ghost"
           fullWidth={false}
           className="px-0! text-sm"
