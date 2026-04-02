@@ -1,4 +1,5 @@
 import AppearOnView from '@/components/AppearOnView'
+import BreathingOrb from './BreathingOrb'
 
 export default function CompanySetup({ page }) {
   return (
@@ -15,39 +16,42 @@ export default function CompanySetup({ page }) {
           <h3 className="text-xl font-normal leading-none text-deep-charcoal/40 tracking-[-0.005em]!">Team</h3>
 
           <div className="space-y-6">
-            {page.team?.map((member, index) => (
-              <AppearOnView key={index} as="div" animation="up" delay={160 + index * 45} className="border border-ocean/20 p-8 md:p-12 lg:p-15">
-                {/* Name & Role */}
-                <div className="space-y-2 pb-10">
-                  <h4 className="text-base font-medium text-deep-charcoal tracking-[-0.005em]! leading-none">{member.full_name}</h4>
-                  <p className="text-base font-normal text-deep-charcoal/60 tracking-[-0.005em]! leading-none">{member.role}</p>
-                </div>
+            {page.team?.map((member, index) => {
+              const orbFrequency = 0.85 + (index % 5) * 0.2
 
-                {/* Focus & Description Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-                  {/* AI Focus */}
-                  <div className="flex items-center gap-5">
-                    <div className="w-16 h-16 rounded-full border border-slate/30 flex items-center justify-center shrink-0 relative overflow-hidden">
-                      <div className="absolute inset-0 rounded-full shadow-[inset_0_2px_10px_rgba(0,0,0,0.05)]"></div>
-                      <div className="w-8 h-8 rounded-full bg-sky-blue/35 blur-[3px] opacity-70"></div>
-                    </div>
-
-                    <div className="text-sm text-deep-charcoal/60 tracking-[-0.005em]! leading-[132%]">
-                      AI focus on
-                      <br />
-                        {member.ai_focus
-                          ? member.ai_focus.charAt(0).toLowerCase() + member.ai_focus.slice(1)
-                          : member.ai_focus}
-                    </div>
+              return (
+                <AppearOnView key={index} as="div" animation="up" delay={160 + index * 45} className="border border-ocean/20 p-8 md:p-12 lg:p-15">
+                  {/* Name & Role */}
+                  <div className="space-y-2 pb-10">
+                    <h4 className="text-base font-medium text-deep-charcoal tracking-[-0.005em]! leading-none">{member.full_name}</h4>
+                    <p className="text-base font-normal text-deep-charcoal/60 tracking-[-0.005em]! leading-none">{member.role}</p>
                   </div>
 
-                  {/* Description */}
-                  <div className="text-base font-normal text-deep-charcoal tracking-[-0.005em]! leading-[150%]">
-                    {member.description}
+                  {/* Focus & Description Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+                    {/* AI Focus */}
+                    <div className="flex items-center gap-5">
+                      <div className="w-16 h-16 rounded-full flex items-center justify-center shrink-0 relative overflow-hidden">
+                        <BreathingOrb className="w-full h-full rounded-full" zoom={2.2} speed={1.5} frequency={orbFrequency} />
+                      </div>
+
+                      <div className="text-sm text-deep-charcoal/60 tracking-[-0.005em]! leading-[132%]">
+                        AI focus on
+                        <br />
+                          {member.ai_focus
+                            ? member.ai_focus.charAt(0).toLowerCase() + member.ai_focus.slice(1)
+                            : member.ai_focus}
+                      </div>
+                    </div>
+
+                    {/* Description */}
+                    <div className="text-base font-normal text-deep-charcoal tracking-[-0.005em]! leading-[150%]">
+                      {member.description}
+                    </div>
                   </div>
-                </div>
-              </AppearOnView>
-            ))}
+                </AppearOnView>
+              )
+            })}
           </div>
         </AppearOnView>
 
